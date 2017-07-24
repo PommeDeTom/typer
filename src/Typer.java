@@ -39,7 +39,7 @@ public class Typer {
 			if(word.equals(input)){
 				ui.updateStats();
 				ui.setInputString("");
-				//TODO verify this includes first and last ints
+				
 				randNum = rand.nextInt(words.size());
 				//Check not the same index as previous
 				if(randNum != i){
@@ -52,7 +52,6 @@ public class Typer {
 			}
 			
 			input = ui.getInputString();
-			//System.out.println(input + " --- " + word);
 			ui.updateTime(((System.currentTimeMillis()-timer)/1000));
 		}
 	}

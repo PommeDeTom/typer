@@ -13,8 +13,6 @@ public class UI implements KeyListener{
 	private JLabel timeLabel;
 	private JLabel numDoneLabel;
 	private JLabel avgTimeLabel;
-	private String inputString = "";
-	private String wordString = "";
 	
 	private double time = 0.0;
 
@@ -66,27 +64,25 @@ public class UI implements KeyListener{
 
 	//TODO Get rid of the strings and just make get and set to the label
 	public void setInputString(String input){
-		this.inputString = input;
-		inputLabel.setText(this.inputString);
+		inputLabel.setText(input);
 	}
 	
 	public String getInputString(){
-		return this.inputString;
+		return this.inputLabel.getText();
 	}
 	
 	public void setWordString(String word){
-		this.wordString = word;
-		this.wordLabel.setText(this.wordString);
+		this.wordLabel.setText(word);
 	}
 	
 	public String getWordString(){
-		return this.wordString;
+		return this.wordLabel.getText();
 	}
 
 	public void updateTime(double time) {
 		DecimalFormat df = new DecimalFormat("#.##");
 		this.time = time;
-		timeLabel.setText("Time elapsed: " + df.format((this.time)));
+		this.timeLabel.setText("Time elapsed: " + df.format((this.time)));
 	}
 
 	public void updateStats() {
@@ -95,16 +91,16 @@ public class UI implements KeyListener{
 		
 		DecimalFormat df = new DecimalFormat("#.##");
 		
-		numDoneLabel.setText("Words typed: " + String.valueOf(numDone));
-		avgTimeLabel.setText("Avg time per word: " + df.format((this.avgTime)));
+		this.numDoneLabel.setText("Words typed: " + String.valueOf(this.numDone));
+		this.avgTimeLabel.setText("Avg time per word: " + df.format((this.avgTime)));
 	}
 
 
 	@Override
 	public void keyPressed(KeyEvent k) {
 		if(k.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE){
-			if(inputString.length()>0){
-				setInputString(inputString.substring(0, inputString.length()-1));
+			if(this.inputLabel.getText().length()>0){
+				setInputString(this.inputLabel.getText().substring(0, this.inputLabel.getText().length()-1));
 			}
 		}
 		
@@ -121,7 +117,7 @@ public class UI implements KeyListener{
 	@Override
 	public void keyTyped(KeyEvent k) {
 		if((int)k.getKeyChar() != 8){
-			setInputString(inputString += (k.getKeyChar()));
+			setInputString((this.inputLabel.getText()) + (k.getKeyChar()));
 		}
 	}
 
