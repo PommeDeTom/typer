@@ -17,7 +17,27 @@ public class Typer {
 	public Typer(){
 		this.ui = new UI();
 		
-        try (BufferedReader br = new BufferedReader(new FileReader("src/WotW")))
+        try (BufferedReader br = new BufferedReader(new FileReader("src/nouns.txt")))
+        {
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) {
+                words.add(sCurrentLine);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+        
+        try (BufferedReader br = new BufferedReader(new FileReader("src/adjectives.txt")))
+        {
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) {
+                words.add(sCurrentLine);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+        
+        try (BufferedReader br = new BufferedReader(new FileReader("src/verbs.txt")))
         {
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
